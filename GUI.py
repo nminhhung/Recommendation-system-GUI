@@ -619,9 +619,9 @@ gc.collect()
     st.write("##### Results: ")
     
     if st.button('Recommendations Results'):
-    with open('Data/users_recs.csv', 'rb') as f:
-        csv = f.read()
-    st.download_button(label='Download Recommendations', data=csv, file_name='userRecs.csv', mime='text/csv')
+        with open('Data/users_recs.csv', 'rb') as f:
+            csv = f.read()
+            st.download_button(label='Download Recommendations', data=csv, file_name='userRecs.csv', mime='text/csv')
 
 
 
