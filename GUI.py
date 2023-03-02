@@ -601,7 +601,7 @@ RMSE = 1.145275
                             userRecs.rec.product_id == data.product_id,
                             "inner").select("customer_id", "product_id", "rec.rating")
     st.write("Top 20 recommendations for each user:")
-    st.dataframe(userRecs.limit(40).toPandas())
+    display(userRecs.limit(40))
     #Clean up the memory from unused objects
     del (
         df,
