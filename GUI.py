@@ -199,7 +199,7 @@ if choice == 'Recommendation Systems':
 elif choice == "Products dataset":
     st.subheader("EDA on Products dataset")
     products = pd.read_csv('Data/products_clean.csv')
-    products = products.cache()
+    
 
     st.write("##### 1. Overview data")
     st.dataframe(products.head(10))
@@ -226,7 +226,7 @@ elif choice == "Products dataset":
     # Display the report using streamlit
     st.write('##### Pandas Profiling Report Products')
     st_profile_report(report_products)
-    products.unpersist()
+    
 
     st.write("##### 3.Nhan xet")
     st.write("""#####
@@ -247,7 +247,7 @@ elif choice == "Products dataset":
 elif choice == "Reviews dataset":
     st.subheader("EDA on Reviews dataset")
     reviews = pd.read_csv('Data/reviews_clean_1.csv', index_col=0)
-    reviews = reviews.cache()
+    
 
     st.write("##### 1. Overview data")
     st.dataframe(reviews.head(10))
@@ -264,7 +264,7 @@ elif choice == "Reviews dataset":
     # Display the report using streamlit
     st.write('##### Pandas Profiling Report Reviews')
     st_profile_report(report_reviews)
-    reviews.unpersist()
+    
 
     st.write("##### 4.Nhan xet")
     st.write("""#####
@@ -280,7 +280,7 @@ elif choice == "Reviews dataset":
 elif choice == "Content Base Filtering":
 
     data = pd.read_csv('Data/products_clean.csv')
-    data = data.cache()
+    
     stop_words = []
     with open('Data/vietnamese-stopwords.txt', 'r',encoding='utf-8') as f:
         for line in f:
@@ -502,7 +502,7 @@ def find_similar_products(text):
         plt.axis('off')
         st.pyplot()
         
-    data.unpersist()
+    
 
     st.write("#### 3. Conclusion")
     st.write("")
@@ -581,7 +581,7 @@ RMSE = 1.145275
     st.write("##### 2. Recommendations")
 
     df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
-    df = df.cache()
+    
     data = df.select('customer_id','product_id','rating')
     (training, test) = data.randomSplit([0.8, 0.2])
     evaluator = RegressionEvaluator(metricName="rmse", 
@@ -597,7 +597,7 @@ RMSE = 1.145275
                             "inner").select("customer_id", "product_id", "rec.rating")
     st.write("Top 20 recommendations for each user:")
     st.dataframe(userRecs.toPandas())
-    df.unpersist()
+    
 
 
 
@@ -608,7 +608,7 @@ elif choice == "Makes Recommendations":
     st.subheader("Let's make some recommendations")
 
     data = pd.read_csv('Data/products_clean.csv')
-    data.cache()
+    
     stop_words = []
     with open('Data/vietnamese-stopwords.txt', 'r',encoding='utf-8') as f:
         for line in f:
@@ -644,4 +644,4 @@ elif choice == "Makes Recommendations":
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis('off')
         st.pyplot()
-    data.unpersist()
+   
