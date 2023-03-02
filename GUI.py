@@ -586,7 +586,7 @@ RMSE = 1.145275
 
     df = spark.read.csv('Data/reviews_clean_11.csv', header=True, inferSchema=True)
     df = df.sample(withReplacement=False, fraction=0.33, seed=42)  
-    data = df.select('customer_id','product_id','rating')
+    data = df.select('customer_id','product_id','rating').cache()
     
     (training, test) = data.randomSplit([0.8, 0.2])
     evaluator = RegressionEvaluator(metricName="rmse", 
@@ -602,6 +602,7 @@ RMSE = 1.145275
                             "inner").select("customer_id", "product_id", "rec.rating")
     st.write("Top 20 recommendations for each user:")
     st.write(userRecs.head(40))
+    data.unpersist()
     #Clean up the memory from unused objects
     del (
         df,
