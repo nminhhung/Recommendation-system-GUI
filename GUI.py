@@ -585,7 +585,7 @@ RMSE = 1.145275
     st.write("##### 2. Recommendations")
 
     df = spark.read.csv('Data/reviews_clean_1.csv', header=True, inferSchema=True)
-    df = df.sample(withReplacement=False, fraction=0.33, seed=42)  
+    df = df.sample(withReplacement=False, fraction=0.1, seed=42)  
     data = df.select('customer_id','product_id','rating')
     
     (training, test) = data.randomSplit([0.8, 0.2])
