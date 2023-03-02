@@ -582,12 +582,9 @@ RMSE = 1.145275
 
     st.write("##### 2. Recommendations")
 
-    # df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
+    df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
     
-    def load_data(sheets_url):
-        csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
-        return pd.read_csv(csv_url)
-    df = load_data(st.secrets["public_gsheets_url"])
+
     data = df.select('customer_id','product_id','rating')
     
     (training, test) = data.randomSplit([0.8, 0.2])
