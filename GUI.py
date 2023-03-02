@@ -34,6 +34,7 @@ from pyspark.sql.functions import explode
 
 
 
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None}, ttl=600)
 
 # Top GUI
 st.title('Make GUI with Streamlit')
