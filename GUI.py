@@ -34,7 +34,7 @@ from pyspark.sql.functions import explode
 
 
 
-@st.cache(ttl=5*60)
+
 
 # Top GUI
 st.title('Make GUI with Streamlit')
