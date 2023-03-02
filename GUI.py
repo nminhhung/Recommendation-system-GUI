@@ -583,7 +583,8 @@ RMSE = 1.145275
 
     st.write("##### 2. Recommendations")
 
-    df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
+    df = spark.read.csv('Data/reviews_clean_1.csv', header=True, inferSchema=True, options={"samplingRatio": 0.33})
+
     
 
     data = df.select('customer_id','product_id','rating')
