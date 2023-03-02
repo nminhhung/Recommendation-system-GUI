@@ -520,6 +520,7 @@ def find_similar_products(text):
 
 
 elif choice == "Collaborative Filtering":
+    
     st.subheader("Collaborative Filtering with PySpark")
     st.write("""
 - Collaborative Filtering is a technique used in recommendation systems to predict a user's interests by analyzing the behavior and preferences of similar users. It works by identifying patterns in the data and making predictions based on the similarities between users and items. Collaborative Filtering can be categorized into two types: user-based collaborative filtering and item-based collaborative filtering. In user-based collaborative filtering, the system recommends items to a user based on the items that similar users have liked. In item-based collaborative filtering, the system recommends items to a user based on the items that the user has previously liked.
@@ -581,9 +582,14 @@ RMSE = 1.145275
 
     st.write("##### 2. Recommendations")
 
-    df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
+    # df = spark.read.csv('Data/reviews_clean_1.csv', header = True, inferSchema = True)
     
+    def load_data(sheets_url):
+        csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+        return pd.read_csv(csv_url)
+    df = load_data(st.secrets["public_gsheets_url"])
     data = df.select('customer_id','product_id','rating')
+    
     (training, test) = data.randomSplit([0.8, 0.2])
     evaluator = RegressionEvaluator(metricName="rmse", 
                                 labelCol="rating",
