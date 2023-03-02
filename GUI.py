@@ -1,5 +1,6 @@
 import streamlit as st
 @st.cache
+
 from streamlit_pandas_profiling import st_profile_report
 import pandas as pd
 import matplotlib.pyplot as plt
