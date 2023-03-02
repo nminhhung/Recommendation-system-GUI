@@ -30,6 +30,7 @@ from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 from pyspark.ml.recommendation import ALSModel
 from pyspark.sql.functions import explode
+
 import gc
 # Enable garbage collection
 gc.enable()
@@ -583,10 +584,8 @@ RMSE = 1.145275
 
     st.write("##### 2. Recommendations")
 
-    df = spark.read.csv('Data/reviews_clean_1.csv', header=True, inferSchema=True, options={"samplingRatio": 0.33})
-
-    
-
+    df = spark.read.csv('Data/reviews_clean_1.csv', header=True, inferSchema=True)
+    df = df.sample(withReplacement=False, fraction=0.33, seed=42)  
     data = df.select('customer_id','product_id','rating')
     
     (training, test) = data.randomSplit([0.8, 0.2])
@@ -602,7 +601,7 @@ RMSE = 1.145275
                             userRecs.rec.product_id == data.product_id,
                             "inner").select("customer_id", "product_id", "rec.rating")
     st.write("Top 20 recommendations for each user:")
-    st.dataframe(userRecs.toPandas())
+    st.dataframe(userRecs.limit(40).toPandas())
     #Clean up the memory from unused objects
     del (
         df,
