@@ -530,7 +530,7 @@ elif choice == "Collaborative Filtering":
 - Pyspark is a Python library for Apache Spark, which is a powerful distributed computing framework. Pyspark provides a simple and efficient way to implement Collaborative Filtering on large datasets. To use Collaborative Filtering with Pyspark, you can use the ALS (Alternating Least Squares) algorithm. This algorithm is implemented in the ml library of Pyspark, which provides a high-level API for building recommendation systems. You can use Pyspark's ALS algorithm to train a model on a large dataset, and then use the model to make recommendations for new users.
     """)
 
-    st.write("##### 1. Coding")
+    st.write("##### 1. Building the model")
 
     code_spark = """
 import findspark
