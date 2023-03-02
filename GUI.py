@@ -618,10 +618,10 @@ gc.collect()
     st.code(code_spark2, language = 'python')
     st.write("##### Results: ")
     
-    if st.button('Recommendations Results'):
-        with open('Data/users_recs.csv', 'rb') as f:
-            csv = f.read()
-            st.download_button(label='Download Recommendations', data=csv, file_name='userRecs.csv', mime='text/csv')
+    if st.button('Recommendations Results'):        
+        df = pd.read_csv('Data/users_recs.csv')
+        st.write("Top 20 recommendations for each user:")
+        st.dataframe(df)
 
 
 
