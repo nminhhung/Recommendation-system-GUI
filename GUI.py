@@ -1,6 +1,4 @@
 import streamlit as st
-@st.cache
-
 from streamlit_pandas_profiling import st_profile_report
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -32,8 +30,9 @@ from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 from pyspark.ml.recommendation import ALSModel
 from pyspark.sql.functions import explode
-
-
+import gc
+# Enable garbage collection
+gc.enable()
 
 
 
@@ -603,7 +602,17 @@ RMSE = 1.145275
                             "inner").select("customer_id", "product_id", "rec.rating")
     st.write("Top 20 recommendations for each user:")
     st.dataframe(userRecs.toPandas())
-    
+    #Clean up the memory from unused objects
+    del (
+        df,
+        data,
+        model,
+        training,
+        test,
+        evaluator,
+        userRecs,
+    )
+    gc.collect()
 
 
 
