@@ -47,8 +47,8 @@ gc.enable()
 
 
 
-main_bg = "img2.png"
-main_bg_ext = "png"
+main_bg = "hyouka.jpg"
+main_bg_ext = "jpg"
 
 side_bg = "img/hyouka1.jpg"
 side_bg_ext = "jpg"
