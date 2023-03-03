@@ -1,3 +1,3 @@
 # Recommendation-system-GUI
-New project with Streamlit.
-Visit here: https://nminhhung-rcm.streamlit.app/
+## New project with Streamlit.
+## Visit here: https://ryoji-rcm.streamlit.app/
