@@ -69,7 +69,7 @@ set_background('img/bg2.jpg')
 # Top GUI
 
 
-st.title('Made by nminhhung')
+st.title('nminhhung Blogspot')
 st.write("""
 ## Recommendation Systems
 """)
