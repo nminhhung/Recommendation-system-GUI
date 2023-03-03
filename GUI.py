@@ -31,9 +31,9 @@ from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 from pyspark.ml.recommendation import ALSModel
 from pyspark.sql.functions import explode
-
-
+import base64
 from PIL import Image
+
 # Loading Image using PIL
 im = Image.open('img/anya.jpg')
 # Adding Image to web app
@@ -44,48 +44,8 @@ import gc
 gc.enable()
 
 
-st.markdown(
-    """
-<style>
-.reportview-container .markdown-text-container {
-    font-family: monospace;
-}
-.sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
-    color: white;
-}
-.Widget>label {
-    color: white;
-    font-family: monospace;
-}
-[class^="st-b"]  {
-    color: white;
-    font-family: monospace;
-}
-.st-bb {
-    background-color: transparent;
-}
-.st-at {
-    background-color: #0c0080;
-}
-footer {
-    font-family: monospace;
-}
-.reportview-container .main footer, .reportview-container .main footer a {
-    color: #0c0080;
-}
-header .decoration {
-    background-image: none;
-}
-
-</style>
-""",
-    unsafe_allow_html=True,
-)
 
 
-import streamlit as st
-import base64
 
 main_bg = "img/hyouka.jpg"
 main_bg_ext = "jpg"
