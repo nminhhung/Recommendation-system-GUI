@@ -33,6 +33,7 @@ from pyspark.ml.recommendation import ALSModel
 from pyspark.sql.functions import explode
 import base64
 from PIL import Image
+import base64
 
 # Loading Image using PIL
 im = Image.open('img/anya.jpg')
@@ -74,14 +75,40 @@ st.title('nminhhung Blogspot')
 
 
 
-import streamlit as st
-import base64
+
+
+
+# audio_file = open('img/bgm.mp3', 'rb')
+# audio_bytes = audio_file.read()
+
+# audio_code = f'''
+# <audio controls autoplay>
+#   <source src="data:audio/mp3;base64,{base64.b64encode(audio_bytes).decode()}" type="audio/mp3">
+# </audio>
+# '''
+
+# audio_minimized_code = '''
+# <style>
+# audio {
+#   width: 200px;
+#   height: 40px;
+#   position: fixed;
+#   top: 50px;
+#   right: 10px;
+#   z-index: 9999;
+# }
+# </style>
+# '''
+
+# st.markdown(audio_code + audio_minimized_code, unsafe_allow_html=True)
+
+
 
 audio_file = open('img/bgm.mp3', 'rb')
 audio_bytes = audio_file.read()
 
 audio_code = f'''
-<audio controls autoplay>
+<audio id="audio-player" controls>
   <source src="data:audio/mp3;base64,{base64.b64encode(audio_bytes).decode()}" type="audio/mp3">
 </audio>
 '''
@@ -99,7 +126,15 @@ audio {
 </style>
 '''
 
-st.markdown(audio_code + audio_minimized_code, unsafe_allow_html=True)
+play_audio_script = '''
+<script>
+var audio = document.getElementById("audio-player");
+audio.autoplay = true;
+audio.load();
+</script>
+'''
+
+st.markdown(audio_code + audio_minimized_code + play_audio_script, unsafe_allow_html=True)
 
 
 
