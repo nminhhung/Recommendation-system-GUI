@@ -74,7 +74,7 @@ st.title('nminhhung Blogspot')
 
 audio_file = open('img/bgm.mp3', 'rb')
 audio_bytes = audio_file.read()
-st.audio(audio_bytes, format='audio/mp3', start_time=0, autoplay=True)
+# st.audio(audio_bytes, format='audio/mp3', start_time=0, autoplay=True)
 
 audio_code = f'''
 <audio controls autoplay>
