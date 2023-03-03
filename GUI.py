@@ -313,11 +313,19 @@ elif choice == "Content Base Filtering":
         return words    
 
     st.subheader("Building a Recommendation System with Machine Learning")
-    st.write("""
-    - Content-Based Filtering is a technique used in recommendation systems that recommends items to users based on the characteristics of the items they have previously liked. The system analyzes the properties of the items and creates a profile of the user's preferences based on these properties. The system then recommends items that have similar properties to the items that the user has previously liked.
-    - To use Content-Based Filtering with Python, you can use the scikit-learn library. Scikit-learn provides several algorithms that can be used for Content-Based Filtering, such as the cosine similarity algorithm. You can create a feature vector for each item in the dataset based on its properties, and then use the cosine similarity algorithm to calculate the similarity between the feature vectors of different items. You can then recommend items to users based on the similarity between the feature vectors of the items they have previously liked and the feature vectors of other items in the dataset.
+    st.markdown("""
+        <p style='text-align: justify;'> 
+        - Content-Based Filtering is a technique used in recommendation systems that recommends items to users based on the characteristics of the items they have previously liked. The system analyzes the properties of the items and creates a profile of the user's preferences based on these properties. The system then recommends items that have similar properties to the items that the user has previously liked.
+        </p>
+        <p style='text-align: justify;'> 
+        - To use Content-Based Filtering with Python, you can use the scikit-learn library. Scikit-learn provides several algorithms that can be used for Content-Based Filtering, such as the cosine similarity algorithm. You can create a feature vector for each item in the dataset based on its properties, and then use the cosine similarity algorithm to calculate the similarity between the feature vectors of different items. You can then recommend items to users based on the similarity between the feature vectors of the items they have previously liked and the feature vectors of other items in the dataset.
+        </p>
+        """, unsafe_allow_html = True)
+#     st.write("""
+#     - Content-Based Filtering is a technique used in recommendation systems that recommends items to users based on the characteristics of the items they have previously liked. The system analyzes the properties of the items and creates a profile of the user's preferences based on these properties. The system then recommends items that have similar properties to the items that the user has previously liked.
+#     - To use Content-Based Filtering with Python, you can use the scikit-learn library. Scikit-learn provides several algorithms that can be used for Content-Based Filtering, such as the cosine similarity algorithm. You can create a feature vector for each item in the dataset based on its properties, and then use the cosine similarity algorithm to calculate the similarity between the feature vectors of different items. You can then recommend items to users based on the similarity between the feature vectors of the items they have previously liked and the feature vectors of other items in the dataset.
     
-    """)
+#     """)
     st.write("#### 1. Gensim")
     st.write("##### 1.1. Coding")
     code1 = """
