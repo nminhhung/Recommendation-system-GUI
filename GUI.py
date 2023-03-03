@@ -414,7 +414,7 @@ elif choice == "Content Base Filtering":
         words = [w for w in words if w not in stop_words]
         return words    
 
-    st.subheader("Building a Recommendation System with Machine Learning")
+    st.subheader("Content-Based Filtering with Python")
     st.markdown("""
         <p style='text-align: justify;'> 
         - Content-Based Filtering is a technique used in recommendation systems that recommends items to users based on the characteristics of the items they have previously liked. The system analyzes the properties of the items and creates a profile of the user's preferences based on these properties. The system then recommends items that have similar properties to the items that the user has previously liked.
