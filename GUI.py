@@ -32,6 +32,13 @@ from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 from pyspark.ml.recommendation import ALSModel
 from pyspark.sql.functions import explode
 
+
+from PIL import Image
+# Loading Image using PIL
+im = Image.open('img/anya.jpg')
+# Adding Image to web app
+st.set_page_config(page_title="Recommendation Systems App", page_icon = im)
+
 import gc
 # Enable garbage collection
 gc.enable()
@@ -102,11 +109,7 @@ st.markdown(
 
 
 # Top GUI
-from PIL import Image
-# Loading Image using PIL
-im = Image.open('img/anya.jpg')
-# Adding Image to web app
-st.set_page_config(page_title="Recommendation Systems App", page_icon = im)
+
 
 st.title('Make GUI with Streamlit')
 st.write("""
