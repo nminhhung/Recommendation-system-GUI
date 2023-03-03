@@ -542,16 +542,27 @@ import pyspark
 print(pyspark.__version__)
 from pyspark.ml.feature import StringIndexer
 from pyspark.ml.recommendation import ALS
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, explode
 import time
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 
+
+# Use StringIndexer
+product_id_index = StringIndexer(inputCol='product_id', outputCol='product_id_index')
+product_model = product_id_index.fit(data)
+df_indexer = product_model.transform(data)
+customer_id_indexer = StringIndexer(inputCol='customer_id', outputCol='customer_id_index')
+customer_model = customer_id_indexer.fit(df_indexer)
+df_indexer = customer_model.transform(df_indexer)
+
+# Cache data
+df_indexer.cache()
 # Split Data
-(training, test) = data.randomSplit([0.8, 0.2])
+(training, test) = df_indexer.randomSplit([0.8, 0.2])
 # Create ALS model
-als = ALS(userCol="customer_id", 
-          itemCol="product_id", 
+als = ALS(userCol="customer_id_index", 
+          itemCol="product_id_index", 
           ratingCol="rating",
           coldStartStrategy="drop", 
           nonnegative=True,
@@ -579,7 +590,7 @@ print("RMSE = %f" % rmse)
     st.write("###### Evaluate")
     code_spark_result = """
 Time taken to train the model: 94.37 seconds
-RMSE = 1.145275
+RMSE = 1.137140
     """
     st.code(code_spark_result, language = 'python')
 
@@ -596,11 +607,18 @@ evaluator = RegressionEvaluator(metricName="rmse",
 
 model = ALSModel.load("spark_model_collaborative_filtering")    
 
+from pyspark.sql.functions import explode
+
+# Get top 20 recommendations for each user
 userRecs = model.recommendForAllUsers(20)
-userRecs = userRecs.selectExpr("customer_id", "explode(recommendations) as rec")
-userRecs = userRecs.join(data.select("product_id").distinct(),
-                        userRecs.rec.product_id == data.product_id,
-                        "inner").select("customer_id", "product_id", "rec.rating")
+
+# Explode the recommendations column
+userRecs = userRecs.selectExpr("customer_id_index", "explode(recommendations) as rec")
+
+# Join with the original DataFrame to get the product ID and name
+userRecs = userRecs.join(df_indexer.select("product_id_index", "product_id").distinct(),
+                         userRecs.rec.product_id_index == df_indexer.product_id_index,
+                         "inner").select("customer_id_index", "product_id", "rec.rating")
 st.write("Top 20 recommendations for each user:")
 st.write(userRecs)
 data.unpersist()
