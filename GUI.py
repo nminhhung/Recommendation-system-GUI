@@ -201,7 +201,7 @@ if choice == 'Recommendation Systems':
             Overall, recommendation systems powered by machine learning represent a powerful tool for businesses seeking to improve customer engagement, drive sales, and gain valuable insights into the behavior of their target audience. As the technology continues to evolve, it is likely that these systems will become even more sophisticated and capable, providing even greater value to businesses of all sizes and industries.
             </p>
             <p style='text-align: justify;'> 
-            :---------:
+            :___________________________________________________________________________________________:
             </p>
             """, unsafe_allow_html=True)
 
