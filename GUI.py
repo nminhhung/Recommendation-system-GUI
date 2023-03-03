@@ -83,7 +83,7 @@ import base64
 main_bg = "img/hyouka.jpg"
 main_bg_ext = "jpg"
 
-side_bg = "imghyouka1.jpgg"
+side_bg = "img/hyouka1.jpg"
 side_bg_ext = "jpg"
 
 st.markdown(
