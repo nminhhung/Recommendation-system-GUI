@@ -157,9 +157,13 @@ st.write("You've chosen: ", choice)
 image2 = Image.open("im2.png")
 st.sidebar.image(image2, caption="Recommendation Systems", use_column_width=True)
 image4 = Image.open("im4.png")
-st.sidebar.image(image4, caption="Rcm Engine", use_column_width=True)
+st.sidebar.image(image4, caption="Engine", use_column_width=True)
 image3 = Image.open("im3.png")
-st.sidebar.image(image3, caption="E-commerce", use_column_width=True)
+st.sidebar.image(image3, caption="Applicability", use_column_width=True)
+image5 = Image.open("img/im5.png")
+st.sidebar.image(image5, caption="Reality", use_column_width=True)
+
+
 st.markdown(
     """
     <style>
