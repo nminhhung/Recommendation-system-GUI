@@ -72,9 +72,10 @@ set_background('img/bg2.jpg')
 
 st.title('nminhhung Blogspot')
 
+import streamlit as st
+
 audio_file = open('img/bgm.mp3', 'rb')
 audio_bytes = audio_file.read()
-# st.audio(audio_bytes, format='audio/mp3', start_time=0, autoplay=True)
 
 audio_code = f'''
 <audio controls autoplay>
@@ -87,10 +88,16 @@ audio_minimized_code = '''
 audio {
   width: 200px;
   height: 40px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
 }
 </style>
 '''
+
 st.markdown(audio_code + audio_minimized_code, unsafe_allow_html=True)
+
 
 
 st.write("""
