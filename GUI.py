@@ -60,9 +60,21 @@ def set_background(png_file):
     </style>
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
-
 set_background('img/bg2.jpg')
 
+
+
+audio_file = open('img/bgm.mp3', 'rb')
+audio_bytes = audio_file.read()
+st.audio(audio_bytes, format='audio/mp3')
+audio_code = '''
+<audio controls>
+  <source src="music.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+'''
+
+st.html(audio_code)
 
 
 
