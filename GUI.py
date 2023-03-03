@@ -76,7 +76,38 @@ header .decoration {
     unsafe_allow_html=True,
 )
 
+
+import streamlit as st
+import base64
+
+main_bg = "img/hyouka.jpg"
+main_bg_ext = "jpg"
+
+side_bg = "imghyouka1.jpgg"
+side_bg_ext = "jpg"
+
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+   .sidebar .sidebar-content {{
+        background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Top GUI
+from PIL import Image
+# Loading Image using PIL
+im = Image.open('img/anya.jpg)
+# Adding Image to web app
+st.set_page_config(page_title="Recommendation Systems App", page_icon = im)
+
 st.title('Make GUI with Streamlit')
 st.write("""
 ## Recommendation Systems
