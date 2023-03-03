@@ -89,7 +89,7 @@ audio {
   width: 200px;
   height: 40px;
   position: fixed;
-  top: 10px;
+  top: 5px;
   right: 10px;
   z-index: 9999;
 }
