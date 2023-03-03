@@ -104,7 +104,7 @@ st.markdown(
 # Top GUI
 from PIL import Image
 # Loading Image using PIL
-im = Image.open('img/anya.jpg)
+im = Image.open('img/anya.jpg')
 # Adding Image to web app
 st.set_page_config(page_title="Recommendation Systems App", page_icon = im)
 
