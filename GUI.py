@@ -108,8 +108,8 @@ audio_file = open('img/bgm.mp3', 'rb')
 audio_bytes = audio_file.read()
 
 audio_code = f'''
-<audio id="audio-player" controls>
-  <source src="data:audio/mp3;base64,{base64.b64encode(audio_bytes).decode()}" type="audio/mp3">
+<audio id="audio-player" controls autoplay>
+  <source src="data:audio/mp3;base64,{base64.b64encode(audio_bytes).decode()}" type="audio/mpeg">
 </audio>
 '''
 
@@ -119,7 +119,7 @@ audio {
   width: 200px;
   height: 40px;
   position: fixed;
-  top: 50px;
+  top: 10px;
   right: 10px;
   z-index: 9999;
 }
@@ -129,12 +129,12 @@ audio {
 play_audio_script = '''
 <script>
 var audio = document.getElementById("audio-player");
-audio.autoplay = true;
-audio.load();
+audio.play();
 </script>
 '''
 
 st.markdown(audio_code + audio_minimized_code + play_audio_script, unsafe_allow_html=True)
+
 
 
 
