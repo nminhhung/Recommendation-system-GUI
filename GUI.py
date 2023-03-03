@@ -597,24 +597,12 @@ RMSE = 1.137140
     st.write("##### 2. Recommendations")
     st.write("###### Coding")
     code_spark2 = """
-df = spark.read.csv('Data/reviews_clean_1.csv', header=True, inferSchema=True)
-data = df.select('customer_id','product_id','rating').cache()
-
-(training, test) = data.randomSplit([0.8, 0.2])
-evaluator = RegressionEvaluator(metricName="rmse", 
-                            labelCol="rating",
-                            predictionCol="prediction")
-
 model = ALSModel.load("spark_model_collaborative_filtering")    
-
 from pyspark.sql.functions import explode
-
 # Get top 20 recommendations for each user
 userRecs = model.recommendForAllUsers(20)
-
 # Explode the recommendations column
 userRecs = userRecs.selectExpr("customer_id_index", "explode(recommendations) as rec")
-
 # Join with the original DataFrame to get the product ID and name
 userRecs = userRecs.join(df_indexer.select("product_id_index", "product_id").distinct(),
                          userRecs.rec.product_id_index == df_indexer.product_id_index,
