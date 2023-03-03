@@ -150,7 +150,7 @@ if uploaded_file is not None:
     products = pd.read_csv(uploaded_file, encoding='utf-8')
     products.to_csv("products_new.csv", index = False)
 
-menu = ["Recommendation Systems", "Products dataset", "Reviews dataset", "Content Base Filtering","Collaborative Filtering", "Makes Recommendations"]
+menu = ["Recommendation Systems", "Products EDA", "Reviews EDA", "Content Base Filtering","Collaborative Filtering", "Makes Recommendations"]
 choice = st.sidebar.selectbox('Menu', menu)
 st.write("You've chosen: ", choice)
 
@@ -319,7 +319,7 @@ if choice == 'Recommendation Systems':
 
 
 
-elif choice == "Products dataset":
+elif choice == "Products EDA":
     st.subheader("EDA on Products dataset")
     products = pd.read_csv('Data/products_clean.csv')
     
@@ -367,7 +367,7 @@ elif choice == "Products dataset":
 
 # ### Reviews
 
-elif choice == "Reviews dataset":
+elif choice == "Reviews EDA":
     st.subheader("EDA on Reviews dataset")
     reviews = pd.read_csv('Data/reviews_clean_1.csv', index_col=0)
     
