@@ -64,15 +64,35 @@ set_background('img/bg2.jpg')
 
 
 
-audio_file = open('img/bgm.mp3', 'rb')
-audio_bytes = audio_file.read()
-st.audio(audio_bytes, format='audio/mp3')
+
 
 
 # Top GUI
 
 
 st.title('nminhhung Blogspot')
+
+audio_file = open('img/bgm.mp3', 'rb')
+audio_bytes = audio_file.read()
+st.audio(audio_bytes, format='audio/mp3', start_time=0, autoplay=True)
+
+audio_code = f'''
+<audio controls autoplay>
+  <source src="data:audio/mp3;base64,{base64.b64encode(audio_bytes).decode()}" type="audio/mp3">
+</audio>
+'''
+
+audio_minimized_code = '''
+<style>
+audio {
+  width: 200px;
+  height: 40px;
+}
+</style>
+'''
+st.markdown(audio_code + audio_minimized_code, unsafe_allow_html=True)
+
+
 st.write("""
 ## Recommendation Systems
 """)
