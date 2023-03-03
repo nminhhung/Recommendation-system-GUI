@@ -72,7 +72,10 @@ set_background('img/bg2.jpg')
 
 st.title('nminhhung Blogspot')
 
+
+
 import streamlit as st
+import base64
 
 audio_file = open('img/bgm.mp3', 'rb')
 audio_bytes = audio_file.read()
@@ -97,6 +100,7 @@ audio {
 '''
 
 st.markdown(audio_code + audio_minimized_code, unsafe_allow_html=True)
+
 
 
 
