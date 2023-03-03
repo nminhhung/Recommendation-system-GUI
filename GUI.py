@@ -69,7 +69,7 @@ set_background('img/bg2.jpg')
 # Top GUI
 
 
-st.title('Make GUI with Streamlit')
+st.title('Made by nminhhung')
 st.write("""
 ## Recommendation Systems
 """)
