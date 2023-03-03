@@ -189,13 +189,29 @@ def visualize_reviews(reviews):
 
 if choice == 'Recommendation Systems':    
     st.subheader("Recommendation Systems")
-    st.write("""
-    ###### Recommendation systems are a powerful tool in modern business operations, enabling companies to provide personalized product recommendations to their customers. By leveraging machine learning algorithms, businesses can analyze customer behavior and purchase histories to generate targeted recommendations that increase customer satisfaction and drive sales. These systems can also help companies to optimize their marketing strategies, by identifying trends and patterns in customer data and tailoring their advertising efforts to better meet customer needs.
+    
+    st.markdown("""
+            <p style='text-align: justify;'> 
+            Recommendation systems are a powerful tool in modern business operations, enabling companies to provide personalized product recommendations to their customers. By leveraging machine learning algorithms, businesses can analyze customer behavior and purchase histories to generate targeted recommendations that increase customer satisfaction and drive sales. These systems can also help companies to optimize their marketing strategies, by identifying trends and patterns in customer data and tailoring their advertising efforts to better meet customer needs. 
+            </p>
+            <p style='text-align: justify;'> 
+            In addition to driving sales and improving customer satisfaction, recommendation systems can also provide valuable insights into the underlying dynamics of consumer behavior. By analyzing patterns in purchase data, businesses can identify which products are most popular, which demographics are most likely to purchase certain items, and how these trends may change over time. This information can be used to inform product development, marketing strategies, and other key business decisions, allowing companies to stay ahead of the curve and remain competitive in a rapidly-evolving marketplace.
+            </p>
+            <p style='text-align: justify;'> 
+            Overall, recommendation systems powered by machine learning represent a powerful tool for businesses seeking to improve customer engagement, drive sales, and gain valuable insights into the behavior of their target audience. As the technology continues to evolve, it is likely that these systems will become even more sophisticated and capable, providing even greater value to businesses of all sizes and industries.
+            </p>
+            <p style='text-align: justify;'> 
+            :---------:
+            </p>
+            """, unsafe_allow_html=True)
 
-    ###### In addition to driving sales and improving customer satisfaction, recommendation systems can also provide valuable insights into the underlying dynamics of consumer behavior. By analyzing patterns in purchase data, businesses can identify which products are most popular, which demographics are most likely to purchase certain items, and how these trends may change over time. This information can be used to inform product development, marketing strategies, and other key business decisions, allowing companies to stay ahead of the curve and remain competitive in a rapidly-evolving marketplace.
+#     st.write("""
+#     ###### Recommendation systems are a powerful tool in modern business operations, enabling companies to provide personalized product recommendations to their customers. By leveraging machine learning algorithms, businesses can analyze customer behavior and purchase histories to generate targeted recommendations that increase customer satisfaction and drive sales. These systems can also help companies to optimize their marketing strategies, by identifying trends and patterns in customer data and tailoring their advertising efforts to better meet customer needs.
 
-    ###### Overall, recommendation systems powered by machine learning represent a powerful tool for businesses seeking to improve customer engagement, drive sales, and gain valuable insights into the behavior of their target audience. As the technology continues to evolve, it is likely that these systems will become even more sophisticated and capable, providing even greater value to businesses of all sizes and industries.
-    """)    
+#     ###### In addition to driving sales and improving customer satisfaction, recommendation systems can also provide valuable insights into the underlying dynamics of consumer behavior. By analyzing patterns in purchase data, businesses can identify which products are most popular, which demographics are most likely to purchase certain items, and how these trends may change over time. This information can be used to inform product development, marketing strategies, and other key business decisions, allowing companies to stay ahead of the curve and remain competitive in a rapidly-evolving marketplace.
+
+#     ###### Overall, recommendation systems powered by machine learning represent a powerful tool for businesses seeking to improve customer engagement, drive sales, and gain valuable insights into the behavior of their target audience. As the technology continues to evolve, it is likely that these systems will become even more sophisticated and capable, providing even greater value to businesses of all sizes and industries.
+#     """)    
     st.image("rs.jpg")
 
 
